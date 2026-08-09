@@ -11,9 +11,15 @@
 //                               damage hit. 0.002 -> one hit every ~17s.
 //   JunkDamageFractionPerTick = fraction of max health lost per hit.
 //                               0.05 -> 20 hits to destroy a part.
-//   Defaults below: an average junk part fully erodes in ~5-6 minutes.
+//   Career default below: an average junk part erodes in ~11 minutes.
 //   For aggressive cleanup (junk gone in ~30s, vanilla PvP feel), use
 //   Fraction = 0.1 and Chance = 0.01.
+//
+// CAREER WARNING: career mode spawns its discoverable salvage sites (ship
+// graveyards, storage pods, abandoned ships) with the same junk allegiance
+// as battle debris, so passive decay erodes those too once you're in their
+// system. Loot POIs promptly, slow the values further, or delete the career
+// block and use the on-demand hotkey mod (csharp/) instead.
 
 ID = brandonh.debris_sweeper
 Name = "Debris Sweeper"
@@ -38,7 +44,7 @@ Actions
 		AddTo = "<modes/career/career.rules>"
 		Name = "JunkDamageChancePerTick"
 		OnlyIfNotExisting = true
-		ToAdd = 0.002
+		ToAdd = 0.001
 	}
 
 	// ---- Creative mode ----
