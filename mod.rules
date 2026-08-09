@@ -1,0 +1,59 @@
+// Debris Sweeper
+//
+// Makes leftover junk chunks from destroyed ships slowly decay away in
+// Career and Creative mode, instead of accumulating forever and lagging
+// the system. Uses the same engine mechanism the vanilla PvP modes use
+// (JunkDamageFractionPerTick / JunkDamageChancePerTick), just with
+// gentler values so you still have time to salvage wrecks.
+//
+// Tuning (sim runs at 30 ticks/second):
+//   JunkDamageChancePerTick   = chance per tick that a junk part takes a
+//                               damage hit. 0.002 -> one hit every ~17s.
+//   JunkDamageFractionPerTick = fraction of max health lost per hit.
+//                               0.05 -> 20 hits to destroy a part.
+//   Defaults below: an average junk part fully erodes in ~5-6 minutes.
+//   For aggressive cleanup (junk gone in ~30s, vanilla PvP feel), use
+//   Fraction = 0.1 and Chance = 0.01.
+
+ID = brandonh.debris_sweeper
+Name = "Debris Sweeper"
+Version = 1.0.0
+CompatibleGameVersions = ["0.30.4", "0.30.3", "0.30.2"]
+Author = "Brandon"
+Description = "Leftover debris from destroyed ships slowly erodes away instead of piling up forever, keeping late-game systems lag-free. Salvage wrecks quickly — junk fully decays in about 5 minutes."
+ModifiesGameplay = true
+
+Actions
+[
+	// ---- Career mode ----
+	{
+		Action = Add
+		AddTo = "<modes/career/career.rules>"
+		Name = "JunkDamageFractionPerTick"
+		OnlyIfNotExisting = true
+		ToAdd = 0.05
+	}
+	{
+		Action = Add
+		AddTo = "<modes/career/career.rules>"
+		Name = "JunkDamageChancePerTick"
+		OnlyIfNotExisting = true
+		ToAdd = 0.002
+	}
+
+	// ---- Creative mode ----
+	{
+		Action = Add
+		AddTo = "<modes/creative/creative.rules>"
+		Name = "JunkDamageFractionPerTick"
+		OnlyIfNotExisting = true
+		ToAdd = 0.05
+	}
+	{
+		Action = Add
+		AddTo = "<modes/creative/creative.rules>"
+		Name = "JunkDamageChancePerTick"
+		OnlyIfNotExisting = true
+		ToAdd = 0.002
+	}
+]
