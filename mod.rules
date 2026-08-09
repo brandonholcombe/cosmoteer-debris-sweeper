@@ -20,6 +20,7 @@ Name = "Debris Sweeper"
 Version = 1.0.0
 CompatibleGameVersions = ["0.30.4", "0.30.3", "0.30.2"]
 Author = "Brandon"
+Logo = "logo.png"
 Description = "Leftover debris from destroyed ships slowly erodes away instead of piling up forever, keeping late-game systems lag-free. Salvage wrecks quickly — junk fully decays in about 5 minutes."
 ModifiesGameplay = true
 

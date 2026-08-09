@@ -72,6 +72,32 @@ code) and the options are:
   a small patch that periodically deletes ships with junk allegiance older
   than N minutes. Guaranteed to work, heavier to build/maintain.
 
+## Publishing to the Steam Workshop
+
+Cosmoteer has Workshop publishing built into the game — no SteamCMD needed:
+
+1. Make sure the mod is in the **user mods folder**
+   (`%USERPROFILE%\Saved Games\Cosmoteer\<SteamID>\Mods\debris_sweeper\`).
+   **If you git-cloned it there, delete the `.git` subfolder from that copy**
+   — the upload includes the entire folder contents.
+2. Launch Cosmoteer → **MODS** menu → find Debris Sweeper → **right-click →
+   Upload to Steam Workshop**.
+3. In the dialog, set the Workshop name/description (plain text — Steam BBCode
+   formatting can be added later on the Workshop page) and **visibility**
+   (start Private or Friends-Only until you've verified it in-game, then flip
+   to Public from the Workshop page). The preview image defaults to
+   `logo.png` from this folder.
+4. Click **Start Upload**. First-time publishers must accept the Steam
+   Workshop agreement (Steam prompts for this; the item stays hidden until
+   accepted).
+5. After upload, Cosmoteer writes a **`.workshop` file** (containing the
+   Workshop item ID) into the mod folder. **Copy that file back into this
+   repo and commit it** — it's what ties future uploads to the same Workshop
+   item.
+6. Updates: edit the mod, right-click → Upload to Steam Workshop again, add
+   change notes. Note the thumbnail is *not* re-uploaded on updates — change
+   it later via the Workshop page or SteamCMD if needed.
+
 ## Optional: reduce loose-resource spam
 
 Loose resource nuggets are the *other* never-despawning lag source. There's no
